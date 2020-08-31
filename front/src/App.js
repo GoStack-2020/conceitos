@@ -3,7 +3,7 @@ import Header from './components/Header';
 import './App.css';
 import api from './services/api.js';
 
-function App () {
+function App() {
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
@@ -12,30 +12,30 @@ function App () {
         });
     }, []);
 
-    async function handleAddProject () {
+    async function handleAddProject() {
 
-    const response = await api.post('/projects', {
-    title: `Novo projeto ${Date.now()}`,
-    owner: "Indiara"
-    });
+        const response = await api.post('/projects', {
+            title: `Novo projeto ${Date.now()}`,
+            owner: "Indiara"
+        });
 
-    const project = response.data;
+        const project = response.data;
 
-    setProjects([...projects, project]);
-}
+        setProjects([...projects, project]);
+    }
 
-  
+
 
     return (
-    <>
-        <Header title="Projects" />
+        <>
+            <Header title="Projects" />
 
-        <ul>
-            {projects.map(project => <li key={project.id}> { project.title } </li>)}
-        </ul>
+            <ul>
+                {projects.map(project => <li key={project.id}> {project.title} </li>)}
+            </ul>
 
-        <button type="button" onClick= {handleAddProject}>Adicionar projeto</button>
-    </>
+            <button type="button" onClick={handleAddProject}>Adicionar projeto</button>
+        </>
     );
 }
 
